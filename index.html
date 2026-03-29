@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   background:#000;
   color:#fff;
@@ -16,14 +17,25 @@ body{
   overflow-x:hidden;
 }
 
-/* 🎥 VIDEO */
+/* 🎥 VIDEO BACKGROUND */
 video{
   position:fixed;
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:0.25;
+  opacity:0.3;
   z-index:-2;
+}
+
+/* 🧠 AI GRADIENT LIGHT */
+body::after{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 60%);
+  pointer-events:none;
+  z-index:-1;
 }
 
 /* 📼 NOISE */
@@ -33,52 +45,8 @@ body::before{
   width:100%;
   height:100%;
   background:url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity:0.08;
+  opacity:0.05;
   pointer-events:none;
-  z-index:999;
-}
-
-/* ⚡ FLASH */
-#flash{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:white;
-  opacity:0;
-  z-index:9998;
-}
-
-/* 👁 FACE */
-#face{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:url("https://i.imgur.com/8yKQFQX.png") center/contain no-repeat;
-  opacity:0;
-  z-index:9997;
-}
-
-/* INTRO */
-#intro{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  cursor:pointer;
-}
-
-#intro h1{
-  font-size:2rem;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  0%,100%{opacity:0.2;}
-  50%{opacity:1;}
 }
 
 /* HERO */
@@ -90,50 +58,11 @@ body::before{
   align-items:center;
 }
 
-/* GLITCH TITLE */
+/* 🔥 CLEAN GLITCH TITLE */
 h1{
   font-size:5rem;
   letter-spacing:10px;
-  position:relative;
-}
-
-h1::before,
-h1::after{
-  content:"PAPA GABBA";
-  position:absolute;
-  left:0;
-}
-
-h1::before{
-  color:red;
-  animation:glitch 0.2s infinite;
-}
-
-h1::after{
-  color:blue;
-  animation:glitch 0.15s infinite;
-}
-
-@keyframes glitch{
-  0%{transform:translate(0);}
-  25%{transform:translate(-3px,3px);}
-  50%{transform:translate(3px,-3px);}
-  75%{transform:translate(-2px,2px);}
-  100%{transform:translate(0);}
-}
-
-/* SCREEN GLITCH */
-body.glitch{
-  animation:screenGlitch 0.3s;
-}
-
-@keyframes screenGlitch{
-  0%{transform:translate(0);}
-  20%{transform:translate(-10px,5px);}
-  40%{transform:translate(10px,-5px);}
-  60%{transform:translate(-5px,3px);}
-  80%{transform:translate(5px,-3px);}
-  100%{transform:translate(0);}
+  text-shadow:2px 0 red, -2px 0 blue;
 }
 
 /* BUTTON */
@@ -141,81 +70,147 @@ body.glitch{
   margin-top:30px;
   padding:15px 40px;
   border:1px solid #fff;
-  color:#fff;
   text-decoration:none;
+  color:#fff;
+  transition:0.3s;
 }
 
-/* MERCH */
-.merch img{
-  width:100%;
+.btn:hover{
+  background:#fff;
+  color:#000;
+  transform:scale(1.05);
+}
+
+/* SECTION */
+.section{
+  padding:100px 20px;
+  text-align:center;
+}
+
+/* 🛒 MERCH */
+.merch{
+  max-width:400px;
+  margin:0 auto;
   transition:0.4s;
 }
 
-.merch img:hover{
+/* IMAGE */
+.merch img{
+  width:100%;
+  border:1px solid rgba(255,255,255,0.2);
+  transition:0.4s;
+}
+
+/* ✨ PREMIUM HOVER */
+.merch:hover img{
   transform:scale(1.05);
-  filter:contrast(1.8);
-  animation:glitch 0.2s infinite;
+  box-shadow:0 0 40px rgba(0,255,255,0.2);
 }
 
-/* SECTIONS */
-.section{
-  padding:80px 20px;
-  text-align:center;
+/* 🧠 AI GLOW */
+.merch:hover{
+  transform:translateY(-10px);
 }
 
+/* BUTTON */
+.merch-btn{
+  display:block;
+  margin-top:15px;
+  padding:12px;
+  border:1px solid #fff;
+  text-decoration:none;
+  color:#fff;
+  transition:0.3s;
+}
+
+.merch-btn:hover{
+  background:#fff;
+  color:#000;
+  letter-spacing:2px;
+}
+
+/* SOCIAL */
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.socials a{
+  border:1px solid #fff;
+  padding:10px 20px;
+  text-decoration:none;
+  color:#fff;
+}
+
+.socials a:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* FOOTER */
 footer{
   padding:40px;
   text-align:center;
+  opacity:.5;
 }
 </style>
 </head>
 
 <body>
 
-<div id="flash"></div>
-<div id="face"></div>
-
+<!-- 🎥 VIDEO -->
 <video autoplay muted loop>
-  <source src="https://cdn.coverr.co/videos/coverr-dark-glitch-4589/1080p.mp4">
+  <source src="https://cdn.coverr.co/videos/coverr-abstract-digital-grid-5173/1080p.mp4">
 </video>
 
-<div id="intro">
-  <h1>ENTER SYSTEM</h1>
-</div>
-
-<audio id="boom">
-  <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
-</audio>
-
+<!-- HERO -->
 <section class="hero">
   <h1>PAPA GABBA</h1>
+
+  <a href="https://open.spotify.com/track/7IzqmNEau3loDdGiLRpwcx" target="_blank" class="btn">
+    LISTEN
+  </a>
 </section>
 
-<script>
-const intro = document.getElementById("intro");
-const boom = document.getElementById("boom");
-const flash = document.getElementById("flash");
-const face = document.getElementById("face");
+<!-- ABOUT -->
+<section class="section">
+  <h2>ABOUT</h2>
+  <p style="opacity:.6;max-width:500px;margin:0 auto;">
+    Raw energy. Dark aesthetics. Papa Gabba blends underground sound with digital chaos and modern rave culture.
+  </p>
+</section>
 
-intro.onclick = () => {
-  intro.style.display = "none";
-  boom.play();
+<!-- MERCH -->
+<section class="section">
+  <h2>MERCH</h2>
 
-  // FLASH
-  flash.style.opacity = 1;
-  setTimeout(()=>flash.style.opacity=0,100);
+  <div class="merch">
+    <img src="https://i.imgur.com/CI0wmv2.jpeg">
 
-  // FACE JUMPSCARE
-  setTimeout(()=>{
-    face.style.opacity = 1;
-    setTimeout(()=>face.style.opacity=0,150);
-  },150);
+    <p style="margin-top:10px;">PAPA GABBA TEE</p>
+    <p style="opacity:.6;font-size:12px;">LIMITED DROP</p>
 
-  // SCREEN GLITCH
-  document.body.classList.add("glitch");
-  setTimeout(()=>document.body.classList.remove("glitch"),300);
-};
-</script>
+    <a href="https://t.me/nxmxmxlxkxx" target="_blank" class="merch-btn">
+      ORDER NOW
+    </a>
+  </div>
+
+</section>
+
+<!-- SOCIAL -->
+<section class="section">
+  <h2>FOLLOW</h2>
+
+  <div class="socials">
+    <a href="https://instagram.com/papagabbaofficial" target="_blank">Instagram</a>
+    <a href="https://open.spotify.com/track/7IzqmNEau3loDdGiLRpwcx" target="_blank">Spotify</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 PAPA GABBA
+</footer>
 
 </body>
 </html>
