@@ -16,7 +16,17 @@ body{
   overflow-x:hidden;
 }
 
-/* 📼 VHS NOISE */
+/* 🎥 VIDEO BACKGROUND */
+video{
+  position:fixed;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.25;
+  z-index:-2;
+}
+
+/* 📼 NOISE */
 body::before{
   content:"";
   position:fixed;
@@ -28,15 +38,27 @@ body::before{
   z-index:999;
 }
 
-/* ⚡ SCREEN FLICKER */
-body{
-  animation:flicker 3s infinite;
+/* ⚡ INTRO SCREEN */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  cursor:pointer;
 }
 
-@keyframes flicker{
-  0%,100%{opacity:1;}
-  50%{opacity:0.98;}
-  52%{opacity:1;}
+#intro h1{
+  font-size:2rem;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
 }
 
 /* HERO */
@@ -89,13 +111,11 @@ h1::after{
   border:1px solid #fff;
   text-decoration:none;
   color:#fff;
-  transition:0.3s;
 }
 
 .btn:hover{
   background:#fff;
   color:#000;
-  animation:glitch 0.2s infinite;
 }
 
 /* SECTION */
@@ -104,32 +124,24 @@ h1::after{
   text-align:center;
 }
 
-h2{
-  margin-bottom:30px;
-  letter-spacing:3px;
-}
-
 /* MERCH */
 .merch{
   max-width:400px;
   margin:0 auto;
 }
 
-/* 💀 ФУТБОЛКА */
 .merch img{
   width:100%;
-  border:1px solid rgba(255,255,255,0.2);
   transition:0.4s;
 }
 
 .merch img:hover{
   transform:scale(1.05);
-  filter:contrast(1.6) brightness(1.2);
-  box-shadow:0 0 50px rgba(255,0,0,0.3);
+  filter:contrast(1.6);
   animation:glitch 0.2s infinite;
 }
 
-/* КНОПКА */
+/* BUTTON */
 .merch-btn{
   display:block;
   margin-top:15px;
@@ -137,13 +149,11 @@ h2{
   border:1px solid #fff;
   text-decoration:none;
   color:#fff;
-  transition:0.3s;
 }
 
 .merch-btn:hover{
   background:#fff;
   color:#000;
-  animation:glitch 0.2s infinite;
 }
 
 /* SOCIAL */
@@ -165,7 +175,6 @@ h2{
   color:#000;
 }
 
-/* FOOTER */
 footer{
   padding:40px;
   text-align:center;
@@ -175,6 +184,21 @@ footer{
 </head>
 
 <body>
+
+<!-- 🎥 VIDEO -->
+<video autoplay muted loop>
+  <source src="https://cdn.coverr.co/videos/coverr-dark-glitch-4589/1080p.mp4" type="video/mp4">
+</video>
+
+<!-- ⚡ INTRO -->
+<div id="intro">
+  <h1>CLICK TO ENTER</h1>
+</div>
+
+<!-- 🔊 SOUND -->
+<audio id="sound">
+  <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
+</audio>
 
 <section class="hero">
   <h1>PAPA GABBA</h1>
@@ -219,6 +243,16 @@ footer{
 <footer>
   © 2026 PAPA GABBA
 </footer>
+
+<script>
+const intro = document.getElementById("intro");
+const sound = document.getElementById("sound");
+
+intro.onclick = () => {
+  intro.style.display = "none";
+  sound.play();
+};
+</script>
 
 </body>
 </html>
